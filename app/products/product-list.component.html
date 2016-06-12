@@ -1,0 +1,67 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2">Filter by:</div>
+            <div class="col-md-4">
+                <input type="text" [(ngModel)]='listFilter' />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Filtered by: {{listFilter}}</h3>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table" *ngIf="products && products.length">
+                <thead>
+                    <tr>
+                        <th>
+                            <button class="btn btn-primary"
+                                (click)='toggleImage()'>
+                                {{showImage ? 'Hide':'Show'}} Image
+                            </button>
+                        </th>
+                        <th>Product</th>
+                        <th>Code</th>
+                        <th>Available</th>
+                        <th>Price</th>
+                        <th>5 star Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img *ngIf='showImage'
+                                 [src]='products[0].imageUrl'
+                                 [title]='products[0].productName'
+                                 [style.width.px]='imageWidth'
+                                 [style.margin.px]='imageMargin'>
+                        </td>
+                        <td>{{products[0].productName}}</td>
+                        <td>{{products[0].productCode | lowercase}}</td>
+                        <td>{{products[0].releaseDate}}</td>
+                        <td>{{products[0].price | currency:'USD':true:'1.2-2'}}</td>
+                        <td>{{products[0].starRating}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img *ngIf='showImage'
+                                 [src]='products[1].imageUrl'
+                                 [title]='products[1].productName'
+                                 [style.width.px]='imageWidth'
+                                 [style.margin.px]='imageMargin'>
+                        </td>
+                        <td>{{products[1].productName}}</td>
+                        <td>{{products[1].productCode | lowercase}}</td>
+                        <td>{{products[1].releaseDate}}</td>
+                        <td>{{products[1].price | currency:'USD':true:'1.2-2'}}</td>
+                        <td>{{products[1].starRating}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
